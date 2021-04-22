@@ -8,7 +8,7 @@ import java.util.List;
 
 public class ArchitectStudioTest {
 
-    /*private ArchitectStudio studio;
+    private ArchitectStudio studio;
 
     @BeforeEach
     public void setUp() {
@@ -69,7 +69,7 @@ public class ArchitectStudioTest {
         Assertions.assertEquals("No such project.", ex.getMessage());
     }
 
-    @Test
+    /*@Test
     public void testGetPlanByProjectName() {
         Assertions.assertEquals(550, studio.getPlanByProjectName("Tűzoltóság, Déli Pályaudvar").calculateSquareMeter());
         Assertions.assertEquals(PlanType.INDUSTRIAL, studio.getPlanByProjectName("Tűzoltóság, Déli Pályaudvar").getType());
