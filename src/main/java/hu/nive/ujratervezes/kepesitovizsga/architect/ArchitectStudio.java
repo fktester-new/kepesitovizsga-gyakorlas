@@ -70,6 +70,23 @@ public class ArchitectStudio {
         return result;
     }
 
+    public List<Plan> getListOfPlansByPlanType(PlanType type){
+        if (type == null){
+            throw new IllegalArgumentException("Parameter must not be null!");
+        }
+        List<Plan> result = new ArrayList<>();
+
+        Collection<Plan> planList = plans.values();
+        Iterator<Plan> iterator = planList.iterator();
+        while (iterator.hasNext()){
+            Plan p = iterator.next();
+            if (p.getType().equals(type)){
+                result.add(p);
+            }
+        }
+        return result;
+    }
+
     private boolean isEmpty(String s){
         return s == null || s.isBlank();
     }

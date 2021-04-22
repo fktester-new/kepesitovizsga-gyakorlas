@@ -94,7 +94,7 @@ public class ArchitectStudioTest {
         Assertions.assertEquals(3, smaller.size());
     }
 
-    /*@Test
+    @Test
     public void testGetListOfPlansByPlanType() {
         List<Plan> industrials = studio.getListOfPlansByPlanType(PlanType.INDUSTRIAL);
 
@@ -105,5 +105,5 @@ public class ArchitectStudioTest {
     public void testGetListOfPlansByEmptyPlanType() {
         Exception ex = Assertions.assertThrows(IllegalArgumentException.class, () -> studio.getListOfPlansByPlanType(null));
         Assertions.assertEquals("Parameter must not be null!", ex.getMessage());
-    }*/
+    }
 }
