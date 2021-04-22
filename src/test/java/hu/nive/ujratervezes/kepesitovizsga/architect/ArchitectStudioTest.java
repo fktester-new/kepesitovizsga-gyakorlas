@@ -69,7 +69,7 @@ public class ArchitectStudioTest {
         Assertions.assertEquals("No such project.", ex.getMessage());
     }
 
-    /*@Test
+    @Test
     public void testGetPlanByProjectName() {
         Assertions.assertEquals(550, studio.getPlanByProjectName("Tűzoltóság, Déli Pályaudvar").calculateSquareMeter());
         Assertions.assertEquals(PlanType.INDUSTRIAL, studio.getPlanByProjectName("Tűzoltóság, Déli Pályaudvar").getType());
@@ -94,7 +94,7 @@ public class ArchitectStudioTest {
         Assertions.assertEquals(3, smaller.size());
     }
 
-    @Test
+    /*@Test
     public void testGetListOfPlansByPlanType() {
         List<Plan> industrials = studio.getListOfPlansByPlanType(PlanType.INDUSTRIAL);
 
