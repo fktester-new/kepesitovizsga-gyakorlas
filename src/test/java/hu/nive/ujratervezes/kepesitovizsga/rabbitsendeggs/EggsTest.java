@@ -1,5 +1,4 @@
 package hu.nive.ujratervezes.kepesitovizsga.rabbitsendeggs;
-
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
