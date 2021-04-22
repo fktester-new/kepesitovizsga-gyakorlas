@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 public class PlanTest {
 
-    /*@Test
+    @Test
     public void testCreateResidentialBuildingPlan() {
         ResidentialBuildingPlan plan = new ResidentialBuildingPlan("Baracska, Rákóczi u. 77.", House.FAMILY_HOUSE, 2, 80);
 
@@ -38,5 +38,5 @@ public class PlanTest {
         Assertions.assertEquals(600, plan.getAreaOfManufacturingHall());
         Assertions.assertEquals(1100, plan.calculateSquareMeter());
         Assertions.assertEquals(PlanType.INDUSTRIAL, plan.getType());
-    }*/
+    }
 }
