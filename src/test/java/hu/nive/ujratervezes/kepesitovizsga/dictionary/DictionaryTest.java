@@ -10,7 +10,7 @@ import java.sql.SQLException;
 
 public class DictionaryTest {
 
-    /*private Dictionary dictionary;
+    private Dictionary dictionary;
     private MariaDbDataSource dataSource;
 
     @BeforeEach
@@ -51,5 +51,5 @@ public class DictionaryTest {
     public void testNotExistingWord2() {
         Exception ex = Assertions.assertThrows(IllegalArgumentException.class, () -> dictionary.getHungarianWord("apple"));
         Assertions.assertEquals("No such word in dictionary.", ex.getMessage());
-    }*/
+    }
 }
