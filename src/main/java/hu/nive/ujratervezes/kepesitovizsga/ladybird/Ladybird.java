@@ -2,10 +2,7 @@ package hu.nive.ujratervezes.kepesitovizsga.ladybird;
 
 import javax.sql.DataSource;
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Ladybird {
 
@@ -52,4 +49,56 @@ public class Ladybird {
             throw new IllegalStateException("Cannot query data.", sqle);
         }
     }
+
+    public Set<Ladybug> getLadybirdByPartOfLatinNameAndNumberOfPoints(String partOfName, int numberOfPoints){
+        if (partOfName == null || partOfName.isBlank()){
+            throw new IllegalArgumentException("The word fragment is empty or null.");
+        }
+        try(Connection conn = dataSource.getConnection();
+            PreparedStatement stmt = conn.prepareStatement("SELECT * FROM ladybirds WHERE latin_name LIKE ? ESCAPE '!' AND number_of_points = ?;")){
+            partOfName = partOfName
+                    .replace("!", "!!")
+                    .replace("%", "!%")
+                    .replace("_", "!_")
+                    .replace("[", "![");
+            stmt.setString(1, "%" + partOfName + "%");
+            stmt.setInt(2, numberOfPoints);
+            return getLadybugs(stmt);
+        } catch (SQLException sqle) {
+            throw new IllegalStateException("Cannot execute query!", sqle);
+        }
+    }
+
+    private Set<Ladybug> getLadybugs(PreparedStatement stmt){
+        try(ResultSet rs = stmt.executeQuery()){
+            Set<Ladybug> result = new HashSet<>();
+            while(rs.next()){
+                String hungarianName = rs.getString("hungarian_name");
+                String latinName = rs.getString("latin_name");
+                String genus = rs.getString("genus");
+                int points = rs.getInt("number_of_points");
+                result.add(new Ladybug(hungarianName, latinName, genus, points));
+            }
+            return result;
+        } catch (SQLException sqle) {
+            throw new IllegalStateException("Cannot select ladybugs.");
+        }
+    }
+
+    public Map<String, Integer> getLadybirdStatistics(){
+        try (Connection conn = dataSource.getConnection();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery("SELECT genus, COUNT(id) AS species FROM ladybirds GROUP BY genus")) {
+            Map<String, Integer> result = new HashMap<>();
+            while (rs.next()){
+                String genus = rs.getString(1);
+                int numberOfSpecies = rs.getInt(2);
+                result.put(genus, numberOfSpecies);
+            }
+            return result;
+        }catch (SQLException sqle){
+            throw new IllegalStateException("Cannot query data.", sqle);
+        }
+    }
+
 }
