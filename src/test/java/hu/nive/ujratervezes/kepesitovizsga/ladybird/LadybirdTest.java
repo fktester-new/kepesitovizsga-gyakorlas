@@ -13,7 +13,7 @@ import java.util.Set;
 
 public class LadybirdTest {
 
-    /*private Ladybird ladybird;
+    private Ladybird ladybird;
 
     @BeforeEach
     public void setUp() {
@@ -58,7 +58,7 @@ public class LadybirdTest {
         Assertions.assertEquals(2, numberOfLadybirdsByPoints.get(7));
     }
 
-    @Test
+    /*@Test
     public void testGetLadybirdByPartOfLatinNameAndNumberOfPoints() {
         Set<Ladybug> ladybirds = ladybird.getLadybirdByPartOfLatinNameAndNumberOfPoints("Scymnus", 2);
 
