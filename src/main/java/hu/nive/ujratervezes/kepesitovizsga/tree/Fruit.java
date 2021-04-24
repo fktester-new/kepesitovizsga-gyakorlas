@@ -1,4 +1,5 @@
 package hu.nive.ujratervezes.kepesitovizsga.tree;
 
-public class Trees {
+public enum Fruit {
+    APPLE, CHERRY, WALNUT
 }

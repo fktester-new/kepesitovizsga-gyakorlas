@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 public class TreesTest {
 
-    /*private Tree tree;
+    private Tree tree;
 
     @Test
     public void testAppleTree() {
@@ -47,5 +47,5 @@ public class TreesTest {
 
         Assertions.assertEquals(270, tree.weightOfFruit);
         Assertions.assertEquals(13, tree.hostBirdNest());
-    }*/
+    }
 }
