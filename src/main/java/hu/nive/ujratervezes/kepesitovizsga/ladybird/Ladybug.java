@@ -1,5 +1,7 @@
 package hu.nive.ujratervezes.kepesitovizsga.ladybird;
 
+import java.util.Objects;
+
 public class Ladybug {
 
     private String hungarianName;
@@ -28,5 +30,18 @@ public class Ladybug {
 
     public int getNumberOfPoints() {
         return numberOfPoints;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Ladybug ladybug = (Ladybug) o;
+        return Objects.equals(hungarianName, ladybug.hungarianName) && Objects.equals(latinName, ladybug.latinName);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(hungarianName, latinName);
     }
 }
