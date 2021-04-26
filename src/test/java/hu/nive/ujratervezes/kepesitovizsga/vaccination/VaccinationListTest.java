@@ -1,4 +1,4 @@
-package hu.nive.ujratervezes.kepesitovizsga.vavvination;
+package hu.nive.ujratervezes.kepesitovizsga.vaccination;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -8,12 +8,10 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.time.LocalDate;
-import java.time.LocalTime;
-import java.util.Map;
 
 public class VaccinationListTest {
 
-    /*private VaccinationList list;
+    private VaccinationList list;
 
     @BeforeEach
     public void setUp() {
@@ -47,7 +45,7 @@ public class VaccinationListTest {
         Assertions.assertEquals(72, list.getAfternoonPersons().get(4).getAge());
     }
 
-    @Test
+    /*@Test
     public void testValidateTaj() {
         Exception ex = Assertions.assertThrows(IllegalArgumentException.class, () -> list.validateTaj());
         Assertions.assertEquals("787340842, 190339732", ex.getMessage());
