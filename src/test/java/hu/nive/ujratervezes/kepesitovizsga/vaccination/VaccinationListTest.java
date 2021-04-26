@@ -45,13 +45,13 @@ public class VaccinationListTest {
         Assertions.assertEquals(72, list.getAfternoonPersons().get(4).getAge());
     }
 
-    /*@Test
+    @Test
     public void testValidateTaj() {
         Exception ex = Assertions.assertThrows(IllegalArgumentException.class, () -> list.validateTaj());
         Assertions.assertEquals("787340842, 190339732", ex.getMessage());
     }
 
-    @Test
+    /*@Test
     public void testInviteExactPerson() {
         Assertions.assertEquals("Kedves Evie Waddams! Ön következik. Kérem, fáradjon be!", list.inviteExactPerson(LocalTime.of(13, 30)));
     }

@@ -30,6 +30,16 @@ public class Person {
                 parts.length > 5 ? VaccinationType.valueOf(parts[5]) : VaccinationType.NONE);
     }
 
+    public static boolean validateTaj(String str){
+        String[] values = str.split("");
+        int odd = Integer.parseInt(values[0]) + Integer.parseInt(values[2]) +Integer.parseInt(values[4]) + Integer.parseInt(values[6]);
+        int even = Integer.parseInt(values[1]) + Integer.parseInt(values[3]) + Integer.parseInt(values[5]) + Integer.parseInt(values[7]);
+
+        int sum = 3 * odd + 7 * even;
+        return sum % 10 == Integer.parseInt(values[8]);
+    }
+
+
     public String getName() {
         return name;
     }

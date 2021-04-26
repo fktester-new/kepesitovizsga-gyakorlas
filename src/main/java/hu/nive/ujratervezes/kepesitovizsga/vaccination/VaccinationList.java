@@ -50,25 +50,40 @@ public class VaccinationList {
         metaData = new MetaData(postalCode, town, day);
     }
 
-    public List<Person> getPersonsMoreThanHundredYearsOld(){
+    public List<Person> getPersonsMoreThanHundredYearsOld() {
         Collection<Person> persons = vaccinations.values();
         List<Person> result = new ArrayList<>();
         for (Person p : persons) {
-            if (p.getAge() > 100){
+            if (p.getAge() > 100) {
                 result.add(p);
             }
         }
-       return result;
+        return result;
     }
 
-    public List<Person> getAfternoonPersons(){
+    public List<Person> getAfternoonPersons() {
         List<Person> result = new ArrayList<>();
-        for (Map.Entry<LocalTime, Person> entries : vaccinations.entrySet()){
-            if (entries.getKey().isAfter(LocalTime.of(12, 0, 0))){
+        for (Map.Entry<LocalTime, Person> entries : vaccinations.entrySet()) {
+            if (entries.getKey().isAfter(LocalTime.of(12, 0, 0))) {
                 result.add(entries.getValue());
             }
         }
         return result;
+    }
+
+    public void validateTaj() {
+        Collection<Person> persons = vaccinations.values();
+        StringBuilder wrongTaj = new StringBuilder();
+        for (Person p : persons) {
+            if (!Person.validateTaj(p.getTaj())) {
+                wrongTaj.append(p.getTaj()).append(", ");
+            }
+        }
+        if (!wrongTaj.isEmpty()){
+            String message = wrongTaj.substring(0,wrongTaj.lastIndexOf(",") );
+            throw new IllegalArgumentException(message);
+        }
+
     }
 
     public MetaData getMetaData() {
