@@ -11,7 +11,7 @@ import java.util.List;
 
 public class ApplicantsTest {
 
-    /*private ApplicantListGenerator generator;
+    private ApplicantListGenerator generator;
     private MariaDbDataSource dataSource;
 
     @BeforeEach
@@ -55,5 +55,5 @@ public class ApplicantsTest {
         Assertions.assertNull(applicants.get(34).getPhoneNumber());
         Assertions.assertNull(applicants.get(122).getEmail());
         Assertions.assertTrue(applicants.contains(new Applicant("Zackariah", "Strewther", "DLX")));
-    }*/
+    }
 }
