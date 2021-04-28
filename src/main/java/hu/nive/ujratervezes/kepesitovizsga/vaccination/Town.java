@@ -2,16 +2,16 @@ package hu.nive.ujratervezes.kepesitovizsga.vaccination;
 
 public class Town {
 
-    private String zip;
+    private String postalCode;
     private String townName;
 
-    public Town(String zip, String townName) {
-        this.zip = zip;
+    public Town(String postalCode, String townName) {
+        this.postalCode = postalCode;
         this.townName = townName;
     }
 
-    public String getZip() {
-        return zip;
+    public String getPostalCode() {
+        return postalCode;
     }
 
     public String getTownName() {
@@ -20,6 +20,6 @@ public class Town {
 
     @Override
     public String toString() {
-        return zip + ", " + townName;
+        return postalCode + ", " + townName;
     }
 }

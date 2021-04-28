@@ -8,6 +8,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.Map;
 
 public class VaccinationListTest {
 
@@ -51,7 +53,7 @@ public class VaccinationListTest {
         Assertions.assertEquals("787340842, 190339732", ex.getMessage());
     }
 
-    /*@Test
+    @Test
     public void testInviteExactPerson() {
         Assertions.assertEquals("Kedves Evie Waddams! Ön következik. Kérem, fáradjon be!", list.inviteExactPerson(LocalTime.of(13, 30)));
     }
@@ -73,5 +75,5 @@ public class VaccinationListTest {
 
         Assertions.assertEquals(9, expected.get(VaccinationType.NONE));
         Assertions.assertEquals(3, expected.get(VaccinationType.PFIZER));
-    }*/
+    }
 }

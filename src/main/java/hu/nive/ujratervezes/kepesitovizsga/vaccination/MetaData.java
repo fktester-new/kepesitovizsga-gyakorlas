@@ -21,7 +21,7 @@ public class MetaData {
     }
 
     public String getPostalCode(){
-        return town.getZip();
+        return town.getPostalCode();
     }
 
     public LocalDate getDate() {

@@ -2,6 +2,8 @@ package hu.nive.ujratervezes.kepesitovizsga.vaccination;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -84,6 +86,52 @@ public class VaccinationList {
             throw new IllegalArgumentException(message);
         }
 
+    }
+
+    public String inviteExactPerson(LocalTime time) {
+        String name = findPersonInvitedAt(time);
+        return readTemplate(name);
+    }
+
+    public Town getTown(){
+        return metaData.getTown();
+    }
+
+    public LocalDate getDateOfVaccination(){
+        return metaData.getDate();
+    }
+
+    public Map<VaccinationType, Integer> getVaccinationStatistics(){
+        Map<VaccinationType, Integer> statistics = new HashMap<>();
+        Collection<Person> persons = vaccinations.values();
+        for (Person p : persons) {
+            VaccinationType key = p.getVaccinationType();
+            if(!statistics.containsKey(key)){
+                statistics.put(key, 1);
+            } else {
+                statistics.put(key, statistics.get(key) + 1);
+            }
+        }
+        return statistics;
+    }
+
+    private String readTemplate(String name) {
+        Path file = Path.of("greeting.txt");
+        try{
+            String greeting = Files.readString(file);
+            return greeting.replace("{nev}", name);
+        } catch (IOException e) {
+            throw new IllegalStateException("Cannot read file.", e);
+        }
+    }
+
+    private String findPersonInvitedAt(LocalTime time){
+        for (Map.Entry<LocalTime, Person> entries : vaccinations.entrySet()){
+            if (entries.getKey().equals(time)){
+                return entries.getValue().getName();
+            }
+        }
+        throw new IllegalArgumentException("There is nobody invited to this time:" + time);
     }
 
     public MetaData getMetaData() {
